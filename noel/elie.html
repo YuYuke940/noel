@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coordonnées GPS - Forêt Noire</title>
+<style>
+body {
+font-family: "Century Gothic", Arial, sans-serif;
+background-color: #f9f9f9;
+color: #333;
+margin: 20px;
+text-align: center;
+}
+#app {
+max-width: 600px;
+margin: 0 auto;
+padding: 20px;
+background: #fff;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+h1 {
+color: #2c3e50;
+}
+.input-group {
+    margin: 20px 0;
+}
+    input {
+        padding: 10px;
+        width: 80%;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: "Century Gothic", Arial, sans-serif;
+}
+button {
+padding: 10px 20px;
+color: #fff;
+background-color: #2ecc71;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-size: 14px;
+}
+button:hover {
+background-color: #27ae60;
+}
+.output {
+ margin-top: 20px;
+font-size: 16px;
+}
+img {
+margin-top: 10px;
+max-width: 100%;
+border-radius: 8px;
+}
+</style>
+</head>
+<body>
+<div id="app">
+<h1>Murmures à la lueur des étoiles</h1>
+<p>Les secrets de la forêt se cachent à la vue de tous ; ceux qui les voient trouveront leur chemin. Assemble tous les fragments et décode-les pour trouver le mot secret.</p>
+<div class="input-group">
+<input type="text" id="wordInput" placeholder="Entre le mot ici...">
+<button onclick="obtenirCoordonnees()">Valider</button>
+</div>
+<div class="output" id="output"></div>
+</div>
+
+<script>
+// Dictionnaire associant des mots à des coordonnées
+const coordonnees = {
+"schwarzwald": { coords: "48.69121, 8.68723", image: "/img/Green Red Modern Merry Christmas Facebook Post.jpeg.jpeg" },
+"Schwarzwald": { coords: "48.69121, 8.68723", image: "/img/Green Red Modern Merry Christmas Facebook Post.jpeg.jpeg" },
+"SCHWARZWALD": { coords: "48.69121, 8.68723", image: "/img/Green Red Modern Merry Christmas Facebook Post.jpeg.jpeg" },
+};
+
+// Fonction pour afficher les coordonnées et le message
+function obtenirCoordonnees() {
+const mot = document.getElementById("wordInput").value;
+const outputDiv = document.getElementById("output");
+
+if (coordonnees[mot]) {
+const { coords, image } = coordonnees[mot];
+outputDiv.innerHTML = `
+<p>Les coordonnées pour <strong>${mot}</strong> sont : <strong>${coords}</strong></p>
+<p>Bien joué mon cœur ! Prépare-toi pour un week-end magique au cœur de la Forêt-Noire. Je t'aime. ❤️</p>
+<img src="${image}" alt="Forêt Noire">
+`;
+} else {
+outputDiv.innerHTML = `<p style="color: red;">Mot non trouvé. Tente un autre mot.</p>`;
+}
+}
+</script>
+</body>
+</html>
